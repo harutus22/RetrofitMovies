@@ -1,5 +1,6 @@
 package com.example.retrofit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,8 +17,19 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String MOVIE_KEY = "Movie";
     private final String TAG = "Retrofit";
     private ArrayList<Movie> movies;
+    private MoviesRecyclerViewAdapter.OnMovieClicked clicked = new MoviesRecyclerViewAdapter.OnMovieClicked() {
+        @Override
+        public void onMovieClicked(Movie movie) {
+            Intent intent = new Intent(getApplicationContext(), MovieActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(MOVIE_KEY, movie);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private void createRecycle(ArrayList<Movie> movies){
         RecyclerView moviesRecyclerView = findViewById(R.id.moviesRecyclerView);
         MoviesRecyclerViewAdapter moviesAdapter = new MoviesRecyclerViewAdapter(this, movies);
+        moviesAdapter.setOnMovieClicked(clicked);
         moviesRecyclerView.setAdapter(moviesAdapter);
         moviesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
