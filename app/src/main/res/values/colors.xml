@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorViewBackground">#BB9F22</color>
+    <color name="colorUnpressedViewBackground">#90841a</color>
 </resources>
