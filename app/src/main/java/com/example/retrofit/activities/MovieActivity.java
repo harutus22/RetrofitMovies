@@ -1,4 +1,4 @@
-package com.example.retrofit;
+package com.example.retrofit.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.retrofit.model.Movie;
+import com.example.retrofit.R;
+import com.example.retrofit.staticValues.StaticNames;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -30,14 +33,14 @@ public class MovieActivity extends AppCompatActivity {
 
     private void setViewsInfo() {
         Intent intent = getIntent();
-        Movie movie = intent.getExtras().getParcelable(MainActivity.MOVIE_KEY);
+        Movie movie = intent.getExtras().getParcelable(StaticNames.MOVIE_KEY);
         title.setText(movie.getMovieTitle());
         Picasso.with(this).load(movie.getMoviePoster()).into(image);
-        String rate = "Rating: " + movie.getMovieRating();
+        String rate = StaticNames.RATING + movie.getMovieRating();
         rating.setText(rate);
-        String realesY = "Release Year: " + movie.getReleaseYear();
+        String realesY = StaticNames.REALESE_YEAR + movie.getReleaseYear();
         releaseYear.setText(realesY);
-        String genre = "Genres: " + Arrays.toString(movie.getGenres());
+        String genre = StaticNames.GENRES + Arrays.toString(movie.getGenres());
         genres.setText(genre);
 
     }

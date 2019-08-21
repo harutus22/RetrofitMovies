@@ -1,4 +1,4 @@
-package com.example.retrofit;
+package com.example.retrofit.myRecyclerView;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.retrofit.myRecyclerView.myRecyclerViewHolder.MoviesRecyclerViewHolder;
+import com.example.retrofit.model.Movie;
+import com.example.retrofit.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
     private ArrayList<Movie> movies;
     private Context context;
     private OnMovieClicked onMovieClicked;
+
     private MoviesRecyclerViewHolder.OnMovieClickListener onMovieClickListener
             = new MoviesRecyclerViewHolder.OnMovieClickListener() {
         @Override
@@ -22,6 +26,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
             onMovieClicked.onMovieClicked(movies.get(position));
         }
     };
+
 
     public MoviesRecyclerViewAdapter(Context context, ArrayList<Movie> movies){
         this.context = context;
@@ -52,7 +57,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
         return movies.size();
     }
 
-    interface OnMovieClicked{
+    public interface OnMovieClicked{
         void onMovieClicked(Movie movie);
     }
 

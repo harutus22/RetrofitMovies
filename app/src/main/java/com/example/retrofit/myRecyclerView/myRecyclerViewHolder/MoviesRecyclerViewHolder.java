@@ -1,10 +1,12 @@
-package com.example.retrofit;
+package com.example.retrofit.myRecyclerView.myRecyclerViewHolder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.retrofit.R;
 
 public class MoviesRecyclerViewHolder extends RecyclerView.ViewHolder {
     private ImageView moviePoster;
@@ -28,7 +30,7 @@ public class MoviesRecyclerViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(onClickListener);
     }
 
-    interface OnMovieClickListener{
+    public interface OnMovieClickListener{
         void onMovieClicked(int position);
     }
 
